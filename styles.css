@@ -1,0 +1,75 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+header {
+    background-color: #111;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    font-family: "Copperplate Gothic", "Copperplate", serif;
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.project img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: 1rem;
+    border: 5px solid #222;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #111;
+    margin-top: 2rem;
+}
