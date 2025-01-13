@@ -11,6 +11,15 @@ body {
     line-height: 1.6;
 }
 
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 header {
     background-color: #111;
     padding: 1rem;
@@ -28,6 +37,24 @@ header h2 {
     font-family: 'Bebas Neue', sans-serif;
     color: #A9A9A9;
     margin-top: 20px;
+}
+
+/* Social Icons Styling */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.social-icons .icon {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.social-icons .icon:hover {
+    color: #0073e6;
 }
 
 .cover-container {
