@@ -11,15 +11,6 @@ body {
     line-height: 1.6;
 }
 
-a {
-    text-decoration: none;
-    color: #fff;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 header {
     background-color: #111;
     padding: 1rem;
@@ -29,80 +20,40 @@ header {
 header h1 {
     font-size: 3.5rem;
     letter-spacing: 2px;
-    margin-bottom: -40px;
     font-family: 'Bebas Neue', sans-serif;
 }
 
 header h2 {
     font-size: 1.7rem;
-    letter-spacing: 1px;
     font-family: 'Bebas Neue', sans-serif;
-    margin-top: 20px;  /* Adjust if you need space between h1 and h2 */
+    color: #A9A9A9;
+    margin-top: 20px;
 }
 
-/* Style for the social icons */
-.social-icons {
-    display: flex;
-    justify-content: center;  /* Center the icons horizontally */
-    gap: 25px;  /* Space between icons */
-    margin-top: -2px;  /* Space between the heading and icons */
-}
-
-.social-icons .icon {
-    font-size: 1.2rem;  /* Icon size */
-    color: #fff;  /* Icon color */
-    text-decoration: none;  /* Remove underlines from links */
-}
-
-.social-icons .icon:hover {
-    color: #0073e6;  /* Hover color */
-}
-
-nav {
-    margin-top: 1rem;
-}
-
-nav ul {
+.cover-container {
+    position: relative;
     display: flex;
     justify-content: center;
-    list-style: none;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-main {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-}
-
-h2, h3 {
-    font-size: 2.0rem;
-    letter-spacing: 1px;
-    font-family: 'Bebas Neue', sans-serif;
-}
-
-p {
-    font-family: 'Open Sans', sans-serif;
-}
-
-.project {
-    margin: 1rem 0;
-    text-align: center;
-}
-
-.project img {
     width: 100%;
     max-width: 800px;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+.cover-image {
+    width: 100%;
     height: auto;
-    margin-bottom: 1rem;
-    border: 5px solid #222;
+    filter: grayscale(50%);
+    transition: filter 0.5s ease;
+}
+
+.cover-container:hover .cover-image {
+    filter: grayscale(0%);
 }
 
 footer {
+    font-size: 0.7rem;
     text-align: center;
     padding: 1rem;
     background-color: #111;
