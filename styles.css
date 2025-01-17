@@ -1,3 +1,4 @@
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -11,78 +12,116 @@ body {
     line-height: 1.6;
 }
 
+/* Links */
 a {
     text-decoration: none;
     color: #fff;
 }
 
 a:hover {
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    color: #fff;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    animation: fadeInDown 1s ease forwards;
+    opacity: 0;
+}
+
+.cta-button {
+    display: inline-block;
+    position: relative;
+    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    padding: 5px 0;
+    margin-top: 5px;
+    overflow: hidden;
+    transition: color 0.3s ease;
     text-decoration: underline;
 }
 
-header {
-    background-color: #111;
-    padding: 1rem;
-    text-align: center;
+.cta-button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transform: scaleX(1);
+    transition: transform 0.3s ease;
 }
 
-header h1 {
-    font-size: 3.5rem;
-    letter-spacing: 2px;
-    font-family: 'Bebas Neue', sans-serif;
+.cta-button:hover::after {
+    transform: scaleX(1);
 }
 
-header h2 {
-    font-size: 1.7rem;
-    font-family: 'Bebas Neue', sans-serif;
-    color: #A9A9A9;
-    margin-top: 20px;
+.cta-button:hover {
+    color: #ccc;
 }
 
-/* Social Icons Styling */
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 20px;
-}
-
-.social-icons .icon {
-    font-size: 1.5rem;
+/* Sticky Header */
+.sticky-header {
+    background-color: #000;
     color: #fff;
-    transition: color 0.3s ease;
-}
-
-.social-icons .icon:hover {
-    color: #0073e6;
-}
-
-.cover-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;
-    margin: 2rem auto;
-    overflow: hidden;
-}
-
-.cover-image {
-    width: 100%;
-    height: auto;
-    filter: grayscale(50%);
-    transition: filter 0.5s ease;
-}
-
-.cover-container:hover .cover-image {
-    filter: grayscale(0%);
-}
-
-footer {
-    font-size: 0.7rem;
+    font-size: 2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
     text-align: center;
-    padding: 1rem;
-    background-color: #111;
-    margin-top: 2rem;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: none;
+}
+
+.sticky-header.visible {
+    display: block;
+}
+
+/* Gallery Section (Initially Hidden) */
+.hidden {
+    display: none;
+}
+
+#gallery {
+    padding: 2rem;
+    background: #000;
+    color: #fff;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
