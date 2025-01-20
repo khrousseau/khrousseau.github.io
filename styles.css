@@ -1,127 +1,204 @@
-/* General Reset */
-* {
+/* Imports */
+@import url("fontawesome-all.min.css");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
+
+/* Reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, 
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, 
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, 
+label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, 
+details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, 
+summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Box Sizing */
+html {
     box-sizing: border-box;
 }
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Body */
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #000;
-    color: #fff;
-    line-height: 1.6;
+    background: #1b1f22;
+    color: #ffffff;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.65;
 }
 
 /* Links */
 a {
+    color: inherit;
     text-decoration: none;
-    color: #fff;
+    border-bottom: dotted 1px rgba(255, 255, 255, 0.5);
+    transition: color 0.2s, background-color 0.2s, border-bottom-color 0.2s;
 }
 
 a:hover {
-    text-decoration: none;
+    border-bottom-color: transparent;
 }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    background: url('images/hero-bg.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    position: relative;
-    color: #fff;
-    padding: 20px;
+/* Typography */
+strong, b {
+    font-weight: 600;
 }
 
-.hero h1 {
-    font-size: 4rem;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    animation: fadeInDown 1s ease forwards;
-    opacity: 0;
-}
-
-.cta-button {
-    display: inline-block;
-    position: relative;
-    font-size: 1.2rem;
-    font-family: 'Raleway', sans-serif;
-    color: #fff;
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 1rem;
     text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 2px;
-    padding: 5px 0;
-    margin-top: 5px;
-    overflow: hidden;
-    transition: color 0.3s ease;
-    text-decoration: underline;
+    letter-spacing: 0.2rem;
 }
 
-.cta-button::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #fff;
-    transform: scaleX(1);
-    transition: transform 0.3s ease;
+h1 {
+    font-size: 2.25rem;
+    line-height: 1.3;
+    letter-spacing: 0.5rem;
 }
 
-.cta-button:hover::after {
-    transform: scaleX(1);
+h2 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    letter-spacing: 0.5rem;
 }
 
-.cta-button:hover {
-    color: #ccc;
-}
+h3 { font-size: 1rem; }
+h4 { font-size: 0.8rem; }
+h5 { font-size: 0.7rem; }
+h6 { font-size: 0.6rem; }
+	
+/* Background */
 
-/* Sticky Header */
-.sticky-header {
-    background-color: #000;
-    color: #fff;
-    font-size: 2rem;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 2px;
-    text-align: center;
-    padding: 10px;
+#bg {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    z-index: 1000;
-    display: none;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    transform: scale(1.0);
+    backface-visibility: hidden;
 }
 
-.sticky-header.visible {
-    display: block;
+#bg:before, #bg:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-/* Gallery Section (Initially Hidden) */
-.hidden {
-    display: none;
+#bg:before {
+    background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
+    background-size: auto, 256px 256px;
+    background-repeat: no-repeat, repeat;
+    background-position: center, center;
+    z-index: 2;
+    transition: background-color 2.5s ease-in-out 0.75s;
 }
 
-#gallery {
-    padding: 2rem;
-    background: #000;
-    color: #fff;
+#bg:after {
+    background-image: url("../../images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.125);
+    transition: transform 0.325s, filter 0.325s;
+    z-index: 1;
 }
 
-/* Animations */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+body.is-preload #bg:before {
+    background-color: #000000;
+}
+
+/* Wrapper */
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    padding: 4rem 2rem;
+    z-index: 3;
+}
+
+#wrapper:before {
+	content: '';
+	display: block;
+}
+
+/* Header */
+
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0) 55%);
+    transition: transform 0.325s, filter 0.325s, opacity 0.325s;
+    max-width: 100%;
+}
+
+#header .content {
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    max-width: 100%;
+}
+
+#header .content .inner {
+    padding: 3rem 2rem;
+    max-height: 40rem;
+    overflow: hidden;
+    transition: max-height 0.75s, padding 0.75s, opacity 0.325s 0.25s;
+}
+
+#header .content p { /* This is the STME button */
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    line-height: 2;
+}
+
+body.is-preload #header .content .inner {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+}
+			
+/* Footer */
+
+#footer {
+    text-align: center;
+    margin-top: 2rem;
+    max-width: 100%;
+    transition: transform 0.325s, filter 0.325s, opacity 0.325s;
+}
+
+#footer .copyright {
+    font-size: 0.6rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 0;
+}
+
+body.is-preload #footer {
+    opacity: 0;
 }
