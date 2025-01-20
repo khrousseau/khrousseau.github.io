@@ -78,9 +78,8 @@ h3 { font-size: 1rem; }
 h4 { font-size: 0.8rem; }
 h5 { font-size: 0.7rem; }
 h6 { font-size: 0.6rem; }
-	
-/* Background */
 
+/* Background */
 #bg {
     position: fixed;
     top: 0;
@@ -125,7 +124,6 @@ body.is-preload #bg:before {
 }
 
 /* Wrapper */
-
 #wrapper {
     display: flex;
     flex-direction: column;
@@ -144,21 +142,32 @@ body.is-preload #bg:before {
 }
 
 /* Header */
-
 #header {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0) 55%);
-    transition: transform 0.325s, filter 0.325s, opacity 0.325s;
+    transition: transform 1s ease-out, opacity 0.6s ease-out; /* Slow transition for the header slide */
     max-width: 100%;
+    z-index: 4;
+}
+
+#header.is-active {
+    transform: translateY(-120%); /* Stop the header near the top of the screen (not fully hidden) */
+    opacity: 1; /* Ensure it's still visible */
+}
+
+#header.is-active .content {
+    border-top-color: transparent; /* Ensure the borders remain disappeared */
+    border-bottom-color: transparent;
 }
 
 #header .content {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #ffffff;
     max-width: 100%;
+    transition: border-color 0.8s ease; /* Adds transition effect to the borders */
 }
 
 #header .content .inner {
@@ -175,15 +184,21 @@ body.is-preload #bg:before {
     line-height: 2;
 }
 
+/* Hover Effect: Fades the top and bottom borders */
+#header:hover .content {
+    border-top-color: transparent; /* Fades top border */
+    border-bottom-color: transparent; /* Fades bottom border */
+    transition: border-color 0.8s ease; /* Slow down the fade effect */
+}
+
 body.is-preload #header .content .inner {
     max-height: 0;
     padding-top: 0;
     padding-bottom: 0;
     opacity: 0;
 }
-			
-/* Footer */
 
+/* Footer */
 #footer {
     text-align: center;
     margin-top: 2rem;
