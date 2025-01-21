@@ -152,7 +152,6 @@ body.is-preload #bg:before {
     transition: transform 1s ease-out, opacity 0.6s ease-out; /* Slow transition for the header slide */
     max-width: 100%;
     z-index: 4;
-    position: relative;
 }
 
 #header.is-active {
