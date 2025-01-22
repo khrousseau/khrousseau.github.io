@@ -6,8 +6,8 @@
 
     // Store the initial device pixel ratio and viewport size
     var initialDevicePixelRatio = window.devicePixelRatio;
-    var initialViewportHeight = $(window).height();
-    var initialViewportWidth = $(window).width();
+    var initialViewportHeight = window.innerHeight; // Use innerHeight for more accurate viewport height
+    var initialViewportWidth = window.innerWidth;
 
     $(window).on('load', function() {
         setTimeout(function() {
@@ -16,20 +16,21 @@
     });
 
     // Apply a small scale to the header initially
-    $header.css('transform', 'scale(0.7)');  // Scale down the header to 90%
+    $header.css('transform', 'scale(0.7)');  // Scale down the header to 70%
+
     $header.on('click', function(e) {
         if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
-            e.preventDefault();
+            e.preventDefault();  // Prevent default action for links and buttons
         }
 
         // Calculate the translation distance
         var headerHeight = $header.outerHeight();
-        var viewportHeight = $(window).height();
+        var viewportHeight = window.innerHeight;
 
         // Ensure the header moves up but does not exceed the top border
         var moveAmount = Math.max(-headerHeight, -(viewportHeight - headerHeight));
 
-        // Apply the calculated transform
+        // Apply the calculated transform for smooth transition
         $header.css({
             transform: `translateY(${moveAmount}px)`,
             transition: 'transform 1s ease-out'
@@ -39,7 +40,7 @@
     });
 
     $button.on('click', function(e) {
-        e.stopPropagation();
+        e.stopPropagation();  // Prevent other event listeners from triggering
         $header.trigger('click');
     });
 
@@ -61,8 +62,8 @@
 
     // Function to handle resizing logic
     function handleResize() {
-        var currentViewportHeight = $(window).height();
-        var currentViewportWidth = $(window).width();
+        var currentViewportHeight = window.innerHeight;
+        var currentViewportWidth = window.innerWidth;
         var currentDevicePixelRatio = window.devicePixelRatio;
 
         // If the device pixel ratio has changed, it's likely a zoom
