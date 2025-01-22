@@ -130,7 +130,7 @@ body.is-preload #bg:before {
     align-items: center;
     justify-content: space-between;
     position: relative;
-    min-height: 100vh;
+    min-height: 106vh;
     width: 100%;
     padding: 4rem 2rem;
     z-index: 3;
