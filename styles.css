@@ -1,0 +1,201 @@
+/* Reset default styles and set box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic page styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    overflow: hidden; /* Prevent scrolling initially */
+    height: 100vh; /* Limit to viewport height */
+}
+
+/* Enable scrolling after animation */
+body.can-scroll {
+    overflow: auto;
+    height: auto;
+}
+
+/* Links */
+a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: dotted 1px rgba(255, 255, 255, 0.5);
+    transition: color 0.2s, background-color 0.2s, border-bottom-color 0.2s;
+}
+
+a:hover {
+    border-bottom-color: transparent;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 1.4s ease; /* Smooth transition for height change */
+}
+
+.hero.shifted {
+    height: 120px; /* Reduced height when moved to top */
+    margin-top: 3rem; /* Space from top of viewport */
+}
+
+/* Main Heading (Hero Section) */
+h1 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    font-size: 3.5rem;
+    text-transform: capitalize;
+    margin-bottom: 0.3rem;
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start slightly below final position */
+    animation: fadeIn 1s ease forwards; /* Fade in animation */
+}
+
+/* Call-to-Action Button (Hero Section) */
+.cta-button {
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 1rem 2rem;
+    background: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease 0.3s forwards; /* Delayed fade in */
+}
+
+/* Background */
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/bg.jpg') center/cover no-repeat; /* Apply background image */
+    opacity: 0;
+    transition: opacity 3s ease, filter 1s ease; /* Fade-in and blur transition */
+    filter: none;
+    z-index: -1; /* Keep it behind content */
+}
+
+/* Projects Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.projects-grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Project Cards */
+.project-card {
+    position: relative;
+    aspect-ratio: 3/4; /* Maintain consistent card proportions */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-card .project-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(100%); /* Hide below image initially */
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-title {
+    transform: translateY(0);
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Space between icons */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-icons a {
+    font-size: 0.9rem; /* Fixed typo */
+    color: #979797; /* Plain dark gray */
+    border-bottom: none; /* Remove dotted border */
+    text-decoration: none;
+    transition: none; /* No hover effects */
+}
+
+.social-icons a:hover {
+    color: #ffffff; /* White color on hover */
+}
+
+/* Footer */
+footer {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    opacity: 0.75;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px); /* Blur effect for glass morphism */
+}
+
+/* Fade In Animation Keyframes */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .hero.shifted {
+        height: 100px;
+    }
+}
